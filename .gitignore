@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+myenv/
+
+# Environment variable files
+.env
+*.env
+
+# VSCode settings (optional)
+.vscode/
+
+# macOS / Linux system files
+.DS_Store
+*.swp
+
+# Pytest cache
+.pytest_cache/
+
+# NLTK data downloads (optional - depends if you want to keep them local)
+nltk_data/
+
+# Python egg and build files
+*.egg-info/
+build/
+dist/
+
+# Logs
+*.log
+
+# Jupyter Notebooks (if used)
+.ipynb_checkpoints/
+
+# SQLite DBs (if temporary)
+*.sqlite3
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Mypy / Pyright
+.mypy_cache/
+.pyright/
+exports/
+data/
+saved_models/

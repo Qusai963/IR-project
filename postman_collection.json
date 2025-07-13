@@ -1,0 +1,409 @@
+{
+  "info": {
+    "name": "IR Project SOA API",
+    "description": "Postman collection for testing SOA-compliant Information Retrieval API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "API Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/health",
+              "host": ["{{base_url}}"],
+              "path": ["api", "health"]
+            }
+          }
+        },
+        {
+          "name": "Root Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Preprocessing Service",
+      "item": [
+        {
+          "name": "Preprocess Text (VSM)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"machine learning algorithms\",\n  \"strategy\": \"vsm\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/preprocess",
+              "host": ["{{base_url}}"],
+              "path": ["api", "preprocess"]
+            }
+          }
+        },
+        {
+          "name": "Preprocess Text (Embedding)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"machine learning algorithms\",\n  \"strategy\": \"embedding\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/preprocess",
+              "host": ["{{base_url}}"],
+              "path": ["api", "preprocess"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Vectorization Service",
+      "item": [
+        {
+          "name": "Vectorize Query (TF-IDF)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"machine learning\",\n  \"model_type\": \"tfidf\",\n  \"dataset_name\": \"antique\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/vectorize",
+              "host": ["{{base_url}}"],
+              "path": ["api", "vectorize"]
+            }
+          }
+        },
+        {
+          "name": "Vectorize Query (BERT)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"machine learning\",\n  \"model_type\": \"bert\",\n  \"dataset_name\": \"antique\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/vectorize",
+              "host": ["{{base_url}}"],
+              "path": ["api", "vectorize"]
+            }
+          }
+        },
+        {
+          "name": "Get Available Models",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/vectorize/models/antique",
+              "host": ["{{base_url}}"],
+              "path": ["api", "vectorize", "models", "antique"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ranking Service",
+      "item": [
+        {
+          "name": "Rank Documents (TF-IDF)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query_vector\": [0.1, 0.2, 0.3, 0.4, 0.5],\n  \"model_type\": \"tfidf\",\n  \"dataset_name\": \"antique\",\n  \"top_k\": 5\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/rank",
+              "host": ["{{base_url}}"],
+              "path": ["api", "rank"]
+            }
+          }
+        },
+        {
+          "name": "Get Ranking Models",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/rank/models/antique",
+              "host": ["{{base_url}}"],
+              "path": ["api", "rank", "models", "antique"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Database Service",
+      "item": [
+        {
+          "name": "Get Documents by IDs",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_name\": \"antique\",\n  \"doc_ids\": [\"doc1\", \"doc2\", \"doc3\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/database/documents",
+              "host": ["{{base_url}}"],
+              "path": ["api", "database", "documents"]
+            }
+          }
+        },
+        {
+          "name": "Get Documents by Dataset",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/database/documents/antique?limit=5",
+              "host": ["{{base_url}}"],
+              "path": ["api", "database", "documents", "antique"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Database Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/database/health",
+              "host": ["{{base_url}}"],
+              "path": ["api", "database", "health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "SOA Search Service",
+      "item": [
+        {
+          "name": "SOA Search (TF-IDF)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_name\": \"antique\",\n  \"query\": \"machine learning\",\n  \"model\": \"tfidf\",\n  \"top_k\": 5\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/soa-search",
+              "host": ["{{base_url}}"],
+              "path": ["api", "soa-search"]
+            }
+          }
+        },
+        {
+          "name": "SOA Search (BERT)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_name\": \"antique\",\n  \"query\": \"machine learning\",\n  \"model\": \"bert\",\n  \"top_k\": 5\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/soa-search",
+              "host": ["{{base_url}}"],
+              "path": ["api", "soa-search"]
+            }
+          }
+        },
+        {
+          "name": "SOA Search Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/soa-search/health",
+              "host": ["{{base_url}}"],
+              "path": ["api", "soa-search", "health"]
+            }
+          }
+        },
+        {
+          "name": "List SOA Services",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/soa-search/services",
+              "host": ["{{base_url}}"],
+              "path": ["api", "soa-search", "services"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Traditional Search (for comparison)",
+      "item": [
+        {
+          "name": "Traditional Search (TF-IDF)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_name\": \"antique\",\n  \"query\": \"machine learning\",\n  \"model\": \"tfidf\",\n  \"top_k\": 5\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/search",
+              "host": ["{{base_url}}"],
+              "path": ["api", "search"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Query Refinement",
+      "item": [
+        {
+          "name": "Get Query Suggestions",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"machine learning\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/query-refinement",
+              "host": ["{{base_url}}"],
+              "path": ["api", "query-refinement"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Data Access",
+      "item": [
+        {
+          "name": "Get Documents",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/docs/antique?limit=5",
+              "host": ["{{base_url}}"],
+              "path": ["api", "docs", "antique"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Queries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/queries/antique?limit=5",
+              "host": ["{{base_url}}"],
+              "path": ["api", "queries", "antique"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ]
+}

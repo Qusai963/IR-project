@@ -1,0 +1,47 @@
+# Core dependencies
+numpy==1.24.3
+scipy==1.10.1
+torch==2.1.0
+torchvision==0.16.0
+torchaudio==2.1.0
+
+# Embedding and ML libraries
+gensim==4.3.2
+transformers==4.35.0
+sentence-transformers==2.2.2
+huggingface-hub>=0.16.4,<0.18
+
+# FastAPI and web dependencies
+fastapi==0.115.12
+uvicorn==0.34.3
+python-multipart==0.0.20
+pydantic==2.11.5
+pydantic-settings==2.9.1
+
+# Database
+psycopg2-binary==2.9.9
+
+# IR and Data processing
+ir_datasets==0.5.10
+pandas==2.1.4
+nltk==3.9.1
+beautifulsoup4==4.13.4
+lxml==5.4.0
+pyspellchecker==0.8.3
+
+# Utilities
+python-dotenv==1.1.0
+tqdm==4.67.1
+requests==2.32.3
+joblib==1.5.1
+
+# Optional but recommended
+rich==14.0.0
+typer==0.16.0
+rank-bm25==0.2.2
+
+# Advanced features dependencies
+faiss-cpu==1.7.4
+matplotlib==3.7.2
+seaborn==0.12.2
+scikit-learn==1.7.0 
